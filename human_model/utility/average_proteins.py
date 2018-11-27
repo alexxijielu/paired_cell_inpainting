@@ -24,7 +24,7 @@ proteinlist = np.array([row for row in list])
 for proteinname in proteinlist:
 
     # Collect all single cell files corresponding to that protein
-    protein = proteinname[1]
+    protein = proteinname[1].replace(".", "-")
     ID = proteinname[0]
     filelist = glob.glob(indir + protein + "_*.txt")
     print (protein, filelist)
