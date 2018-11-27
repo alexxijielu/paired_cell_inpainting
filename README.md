@@ -77,27 +77,27 @@ To reproduce the results comparable to those presented in the manuscript (both i
 NOTE:
 All steps will assume the user is in the "human_model" directory
 
-# Downloading the Full Images:
+## Downloading the Full Images:
 1. To download images from the Human Protein Atlas, we have included a python script under /data_download/download_hpa.py To run, call "python download_hpa.py".
 2. Depending on your internet connection, this step will take about a week. (Note that this step will download about 24 GB of data)
 3. This script will save images in the "human_protein_atlas" directory under the "human_model" directory by default. 
 
-# Segmenting the Full Images into Single-Cell Crops:
+## Segmenting the Full Images into Single-Cell Crops:
 1. To convert the raw images into a format appropriate for training and feature extraction, we extract crops around the single cells in these images. This is done by using the nuclear channel, as the nuclei are well separated and easy to segment using standard computer vision techniques (an otsu filter) in this dataset. 
 2. We have included a python script under /data_download/segment_and_crop_human_atlas.py To run, call "python segment_and_crop_human_atlas.py".
 3. This script will save images in the "human_protein_atlas_single_cell" directory under the "human_model" directory by default. This step should take 1-2 days, and will save about 200 GB of data. By default, the script will downsample the images to 25% of the original size, and segment 128x128 crops of single cells. We further reduce these crops to 64x64 during training, to reduce training time (it is possible to use larger resolution crops during training, but we need to optimize the model architecture to accommodate this change in resolution - this is left for future work.) 
 
-# Filtering the Data:
+## Filtering the Data:
 1. We remove any images with fewer than 5 single cell crops, to ensure all data has enough crops. 
 3. To remove cells with too few proteins, we have included a script under /preprocessing/filter_dataset_by_number.py. To run, call "python filter_dataset_by_number.py". This will remove any directories in the human_protein_atlas_single_cell directory with fewer than 5 cells. 
 
-# Training:
+## Training:
 1. Open the "opts.py" file and change the "checkpoint_path" variable to the directory to save the weights of the trained model in. By default, this argument is set to the pretrained weights, so changethis or else these weights will be overwritten by your training run.  Learning rate and number of epochs can also be specified under opts. 
 (Note that the number of channels in the source image and the target marker image are hardcoded under train.py when declaring the Pair_Model() object, as 2 and 1, respectively. If there are different numbers of channels in your images, you may need to change these.)
 2. Run the training script by issuing command line argument "python train.py". This will train the model and save the weights in the checkpoint_path directory as "model_weights.h5"
 The training script will run for 30 epochs; this will take about 3-4 days with the hardware specs we used (training this model without a GPU is very computationally expensive and likely unfeasible.)
 
-# Extracting Features:
+## Extracting Features:
 1. Open the "opts.py" file and change the "checkpoint_path" variable to the directory to find pretrained weights from. We have provided pretrained weights used in the manuscript, so to use these, set the variable to "./pretrained_weights/"; alternatively, you can use your own weights from the previous training step. We have also included an alternative weights file in /pretrained_weights/filtered_model_weights.h5. These are trained weights with variable proteins filtered from the Human Protein Atlas, and extract better representations than the weights we trained using all of the Human Protein Atlas, noise included. To toggle to this file, change the final line in train.py.
 2. Run the evaluation script by issuing command line argument "python eval_layer_all_cells.py". This will extract features from single cells in the "human_protein_atlas_single_cell" directory (note that you will need to download these images first, as in the "Downloading the Raw Images" and "Segmenting the Raw Images" step; the directory of images to extract features from can be changed by changing the 
 "datapath" variable. By default, the script is configured to extract features from the 3rd convolutional layer of our network, but this can be changed by changing the "target_layer" variable in the script. 
