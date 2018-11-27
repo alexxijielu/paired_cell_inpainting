@@ -17,22 +17,7 @@ To achieve the results reported in our manuscript, the model requires a large am
 Operating system:
 This code was tested on a CentOS Linux 7 server
 
-Our code requires and has been tested with Python 3.6.1, with the following packages:
-cudatoolkit 9.0
-cudnn 7.1.2
-deepdish 0.3.4
-keras 2.1.5
-h5py 2.7.0
-mahotas 1.4.4
-numpy 1.13.3
-pandas 0.22.3
-Pillow 5.1.0
-skikit-image 0.13.1
-scikit-learn 0.19.0
-scipy 1.1.0
-tensorboard 1.7.0
-tensorflow 1.3.0
-tensorflow-gpu 1.7.0
+Our code requires and has been tested with Python 3.6.1, with the packages listed in requirements.txt
 
 Hardware requirements:
 - For training our neural networks, we used a Tesla K40c GPU. 
@@ -40,7 +25,7 @@ Hardware requirements:
 - For the human model, we recommend at least 250 GB of available hard drive space, if you choose to download the full dataset. 
 
 # Yeast Model
-We have provided a small toy dataset for the yeast model for demo purposes. Full reproduction of the results reported in our manuscript requiresdownloading of the entire yeast and human datasets we used; we have included instructions and estimated running times in the "Instructions for Use" section. 
+We have provided a small toy dataset for the yeast model for demo purposes. Full reproduction of the results reported in our manuscript requires downloading of the entire yeast and human datasets we used. The yeast dataset can be obtained as zip files from our webserver: http://142.150.215.41/image_screens/WT2/
 
 To run our code on the small toy dataset:
 
