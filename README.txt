@@ -1,6 +1,5 @@
-===============
-Important Note:
-===============
+#Important Note:
+
 To achieve the results reported in our manuscript, the model requires a large amount of training data. We have included pretrained weights for both 
 of the models we used to extract features for our manuscript. As our training datasets are large (>200 GB), it was not possible to include the full 
 data for reproducing these weights. For the yeast model, we have included a small toy dataset of 5 proteins, but models trained on this data will not 
@@ -8,9 +7,7 @@ achieve results comparable to our pretrained model and should only be used to ve
 small toy dataset of 3 proteins, and we have alsoincluded scripts to systematically download and crop the training data, as this data is more readily
 available to the public.
 
-====================
-System Requirements:
-====================
+#System Requirements:
 Operating system:
 This code was tested on a CentOS Linux 7 server
 
