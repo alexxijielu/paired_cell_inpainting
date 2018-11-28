@@ -27,6 +27,8 @@ Hardware requirements:
 # Yeast Model
 We have provided a small toy dataset for the yeast model for demo purposes. Full reproduction of the results reported in our manuscript requires downloading of the entire yeast and human datasets we used. The yeast dataset can be obtained as zip files from our webserver: http://142.150.215.41/image_screens/WT2/
 
+Note that these are full images and need to be cropped into single-cell crops first. We got good results using a transferred mask-rcnn model trained by Deep Retina for a previous Kaggle bowl contest in nuclear segmentation, on the RFP channel of these images: https://github.com/Lopezurrutia/DSB_2018
+
 To run our code on the small toy dataset:
 
 ## Training
@@ -58,7 +60,6 @@ text file (for benchmark purposes, these features aren't used by our code).
 # Human Model
 To reproduce the results comparable to those presented in the manuscript (both in terms of training the model and in extracting features), the full datasets used are required. For your convenience, for the human model, we provide scripts to automatically download and preprocess all of the images from the Human Protein Atlas. 
 
-
 NOTE:
 All steps will assume the user is in the "human_model" directory
 
@@ -68,7 +69,7 @@ All steps will assume the user is in the "human_model" directory
 3. This script will save images in the "human_protein_atlas" directory under the "human_model" directory by default. 
 
 ## Segmenting the Full Images into Single-Cell Crops:
-1. To convert the raw images into a format appropriate for training and feature extraction, we extract crops around the single cells in these images. This is done by using the nuclear channel, as the nuclei are well separated and easy to segment using standard computer vision techniques (an otsu filter) in this dataset. 
+1. To convert the raw images into a format appropriate for training and feature extraction, we extract crops around the single cells in these images. This is done by using the nuclear channel, as the nuclei are well separated and easy to segment using standard computer vision techniques (an otsu filter) in this dataset. We designed this segmentation algorithm to be robust to artifacts, but more sophisticated neural network segmentation methods may be more sensitive to cells and permit for the retention of more single cell crops. 
 2. We have included a python script under /data_download/segment_and_crop_human_atlas.py To run, call "python segment_and_crop_human_atlas.py".
 3. This script will save images in the "human_protein_atlas_single_cell" directory under the "human_model" directory by default. This step should take 1-2 days, and will save about 200 GB of data. By default, the script will downsample the images to 25% of the original size, and segment 128x128 crops of single cells. We further reduce these crops to 64x64 during training, to reduce training time (it is possible to use larger resolution crops during training, but we need to optimize the model architecture to accommodate this change in resolution - this is left for future work.) 
 
