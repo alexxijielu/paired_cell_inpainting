@@ -61,7 +61,7 @@ text file (for benchmark purposes, these features aren't used by our code).
 To reproduce the results comparable to those presented in the manuscript (both in terms of training the model and in extracting features), the full datasets used are required. For your convenience, for the human model, we provide scripts to automatically download and preprocess all of the images from the Human Protein Atlas. 
 
 NOTE:
-All steps will assume the user is in the "human_model" directory
+All steps will assume the user is in the "human_model" directory, unless otherwise noted (the download_hpa.py, segment_and_crop_human_atlas.py, and filter_dataset_by_number.py files are hardcoded to be executed from within the directories they reside in.)
 
 ## Downloading the Full Images:
 1. To download images from the Human Protein Atlas, we have included a python script under /data_download/download_hpa.py To run, call "python download_hpa.py".
@@ -74,8 +74,8 @@ All steps will assume the user is in the "human_model" directory
 3. This script will save images in the "human_protein_atlas_single_cell" directory under the "human_model" directory by default. This step should take 1-2 days, and will save about 200 GB of data. By default, the script will downsample the images to 25% of the original size, and segment 128x128 crops of single cells. We further reduce these crops to 64x64 during training, to reduce training time (it is possible to use larger resolution crops during training, but we need to optimize the model architecture to accommodate this change in resolution - this is left for future work.) 
 
 ## Filtering the Data:
-1. We remove any images with fewer than 5 single cell crops, to ensure all data has enough crops. 
-3. To remove cells with too few proteins, we have included a script under /preprocessing/filter_dataset_by_number.py. To run, call "python filter_dataset_by_number.py". This will remove any directories in the human_protein_atlas_single_cell directory with fewer than 5 cells. 
+1. We remove any images with <=5 cells for human cells (and <=30 for yeast cells), to ensure all data has enough crops to form a large number of pairs. 
+3. To remove directories with too proteins, we have included a script under /preprocessing/filter_dataset_by_number.py. To run, call "python filter_dataset_by_number.py". This will remove any directories in the human_protein_atlas_single_cell directory with fewer than 5 cells. 
 
 ## Training:
 1. Open the "opts.py" file and change the "checkpoint_path" variable to the directory to save the weights of the trained model in. By default, this argument is set to the pretrained weights, so changethis or else these weights will be overwritten by your training run.  Learning rate and number of epochs can also be specified under opts. 
