@@ -75,7 +75,7 @@ All steps will assume the user is in the "human_model" directory, unless otherwi
 
 ## Filtering the Data:
 1. We remove any images with <=5 cells for human cells (and <=30 for yeast cells), to ensure all data has enough crops to form a large number of pairs. 
-3. To remove directories with too proteins, we have included a script under /preprocessing/filter_dataset_by_number.py. To run, call "python filter_dataset_by_number.py". This will remove any directories in the human_protein_atlas_single_cell directory with fewer than 5 cells. 
+3. To remove directories with too few proteins, we have included a script under /preprocessing/filter_dataset_by_number.py. To run, call "python filter_dataset_by_number.py". This will remove any directories in the human_protein_atlas_single_cell directory with fewer than 5 cells. 
 
 ## Training:
 1. Open the "opts.py" file and change the "checkpoint_path" variable to the directory to save the weights of the trained model in. By default, this argument is set to the pretrained weights, so changethis or else these weights will be overwritten by your training run.  Learning rate and number of epochs can also be specified under opts. 
