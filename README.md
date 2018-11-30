@@ -78,8 +78,8 @@ All steps will assume the user is in the "human_model" directory, unless otherwi
 3. To remove directories with too few proteins, we have included a script under /preprocessing/filter_dataset_by_number.py. To run, call "python filter_dataset_by_number.py". This will remove any directories in the human_protein_atlas_single_cell directory with fewer than 5 cells. 
 
 ## Training:
-1. Open the "opts.py" file and change the "checkpoint_path" variable to the directory to save the weights of the trained model in. By default, this argument is set to the pretrained weights, so changethis or else these weights will be overwritten by your training run.  Learning rate and number of epochs can also be specified under opts. 
-(Note that the number of channels in the source image and the target marker image are hardcoded under train.py when declaring the Pair_Model() object, as 2 and 1, respectively. If there are different numbers of channels in your images, you may need to change these.)
+1. Open the "opts.py" file and change the "checkpoint_path" variable to the directory to save the weights of the trained model in. By default, this argument is set to the pretrained weights, so change this or else these weights will be overwritten by your training run.  Learning rate and number of epochs can also be specified under opts. 
+(Note that the number of channels in the source image and the target marker image are hardcoded under train.py when declaring the Pair_Model() object, as 2 and 1, respectively. If there are different numbers of channels in your images, you may need to change these, along with the data loading operations in dataset.py.)
 2. Run the training script by issuing command line argument "python train.py". This will train the model and save the weights in the checkpoint_path directory as "model_weights.h5"
 The training script will run for 30 epochs; this will take about 3-4 days with the hardware specs we used (training this model without a GPU is very computationally expensive and likely unfeasible.)
 
