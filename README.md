@@ -42,7 +42,7 @@ The training script will run for 30 epochs; with the toy dataset provided, this 
 1. Change directories to the yeast_model directory
 2. Open the "opts.py" file and change the "checkpoint_path" variable to the directory to find pretrained weights from. We have provided pretrained weights used in the manuscript, so to use these, set the variable to "./pretrained_weights/" 
 (The dataset to extract features from can also be changed in opts.py by changing the "data_path" argument; by default, this is set to the toy dataset)
-3. Run the evaluation script by issuing command line argument "python eval_layer.py". This will extract features from single cells in the toy dataset. Output files will be saved in the
+3. Run the evaluation script by issuing command line argument "python extract_features.py". This will extract features from single cells in the toy dataset. Output files will be saved in the
 directory given by the "checkpoint_path" variable; these files will contain all features for all of the single cells at each of the 5 convolutional layers as a tab-delimited file. 
 Each cell is saved as a row in this text file, and each column is a feature (with the first column being the file name of the single cell crop). 5 files will be saved, with suffixes
 "conv1_1" to "conv5_1", which are in order, features extracted from each convolutional layer in the CNN respectively (we had best results using conv3_1 and conv4_1). With the toy
