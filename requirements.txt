@@ -5,7 +5,7 @@ keras 2.1.5
 h5py 2.7.0
 mahotas 1.4.4
 numpy 1.13.3
-pandas 0.22.3
+pandas 0.20.3
 Pillow 5.1.0
 scikit-image 0.13.1
 scikit-learn 0.19.0
