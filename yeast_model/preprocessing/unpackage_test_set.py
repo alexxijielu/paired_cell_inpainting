@@ -32,7 +32,7 @@ outpath = outdir + "images/"
 featpath = outdir + "cellprofiler_features.txt"
 
 if not os.path.exists(outpath):
-    os.mkdir(outdir)
+    os.mkdir(outpath)
 
 imagedict = dd.io.load(path)
 
