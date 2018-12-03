@@ -27,7 +27,7 @@ Hardware requirements:
 # Yeast Model
 We have provided a small toy dataset for the yeast model for demo purposes. Full reproduction of the results reported in our manuscript requires downloading of the entire yeast and human datasets we used. The yeast dataset can be obtained as zip files from our webserver: http://142.150.215.41/image_screens/WT2/
 
-Note that these are full images and need to be cropped into single-cell crops first. We got good results using a transferred mask-rcnn model trained by Deep Retina for a previous Kaggle bowl contest in nuclear segmentation, on the RFP channel of these images: https://github.com/Lopezurrutia/DSB_2018
+Note that these are full images and need to be cropped into single-cell crops first. We got good results using a transferred mask-rcnn model trained by Deep Retina for a previous Kaggle bowl contest in nuclear segmentation, on the RFP channel of these images: https://github.com/Lopezurrutia/DSB_2018. We've adapted this model into a user-friendly script here: https://github.com/alexxijielu/yeast_segmentation
 
 To run our code on the small toy dataset:
 
