@@ -73,7 +73,7 @@ class Dataset(object):
         # Get the path of the image
         path = self.image_info[image_id]['path']
         proteinname = self.image_info[image_id]['name']
-        brightfieldname = proteinname.replace("_gfp", "_rfp")
+        brightfieldname = proteinname.replace("_gfp", "_bf")
         label = proteinname.rsplit("_", -1)[0]
 
         # Load and return all two channels for yeast data, as well as the name of the image
@@ -103,7 +103,7 @@ class Dataset(object):
             sampled_image = np.random.choice(image_names)
 
             proteinname = sampled_image
-            brightfieldname = proteinname.replace("_gfp", "_rfp")
+            brightfieldname = proteinname.replace("_gfp", "_bf")
 
             protein = np.array(Image.open(path + proteinname))
             try:
