@@ -6,8 +6,8 @@ Paired cell inpainting is a self-supervised learning training task designed to l
 
 This repository implements the architecture shown above. 
 
-For full details, see our BioRxiv pre-print:
-https://www.biorxiv.org/content/early/2018/11/20/395954
+For full details, see our PLoS Computational Biology paper:
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007348
 
 # Important Note:
 
